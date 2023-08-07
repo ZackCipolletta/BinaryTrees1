@@ -1,4 +1,5 @@
 import BST from '../src/bst.js';
+import BSTNode from '../src/bst.node.js';
 
 describe('binarySearchTree', () => {
 
@@ -8,8 +9,13 @@ describe('binarySearchTree', () => {
   });
 
 
-  test('it should create a new root node')
+  test('it should create a new root node', () => {
+    let bst = new BST();
+    let node = new BSTNode(36);
+    bst.insertNode(node);
+    expect(bst.root).toEqual(node);
+  });
 
-
+  test('it should add a child node to the right of the root node')
 
 });
