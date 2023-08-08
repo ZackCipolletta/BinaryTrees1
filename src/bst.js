@@ -22,30 +22,52 @@ export default class BST {
     }
   }
 
-  insertNode(insertedNode) {
-    if (this.root === null) {
-      this.root = insertedNode;
-    } else {
+  remove(value) {
+    if (this.search(value)) {
       let currentNode = this.root;
       while (true) {
-        if (currentNode.data > insertedNode.data) {
-          if (currentNode.left === null) {
-            currentNode.left = insertedNode;
-            return this;
+        if (currentNode.data === value) {
+          if (currentNode.left === null && currentNode.right === null) {
+            return true;
           } else {
-            currentNode = currentNode.left;
+            return false;
           }
-        } else if (currentNode.data < insertedNode.data) {
-          if (currentNode.right === null) {
-            currentNode.right = insertedNode;
-            return this;
+        } else if (currentNode.data > value) {
+          currentNode = currentNode.left;
+        } else if (currentNode.data < value) {
+          currentNode = currentNode.right;
+        }
+      }
+    } else {
+      return false;
+    }
+  }
+
+
+    insertNode(insertedNode) {
+      if (this.root === null) {
+        this.root = insertedNode;
+      } else {
+        let currentNode = this.root;
+        while (true) {
+          if (currentNode.data > insertedNode.data) {
+            if (currentNode.left === null) {
+              currentNode.left = insertedNode;
+              return this;
+            } else {
+              currentNode = currentNode.left;
+            }
+          } else if (currentNode.data < insertedNode.data) {
+            if (currentNode.right === null) {
+              currentNode.right = insertedNode;
+              return this;
+            } else {
+              currentNode = currentNode.right;
+            }
           } else {
-            currentNode = currentNode.right;
+            return this;
           }
-        } else {
-          return this;
         }
       }
     }
   }
-}

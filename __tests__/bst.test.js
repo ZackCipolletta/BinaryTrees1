@@ -113,4 +113,20 @@ describe('binarySearchTree', () => {
     expect(pbst.search(5)).toEqual(true);
   });
 
+  test('it should return false if the node to be removed does not exist in the tree', () => {
+    expect(pbst.remove(9)).toEqual(false);
+  })
+
+  // test('it should return the phrase "search worked" if the remove method is able to call the search method and find a specified node.', () => {
+  //   expect(pbst.remove(5)).toEqual('search worked');
+  // })
+
+  test('it should return true if the node to be removed is a leaf node', () => {
+    expect(pbst.remove(5)).toEqual(true);
+  })
+
+  test('it should return false if the node to be removed is not a leaf node', () => {
+    expect(pbst.remove(6)).toEqual(false);
+  })
+
 });
